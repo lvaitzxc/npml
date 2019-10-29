@@ -1,7 +1,7 @@
+import numpy as np
+
 from base import Classifier
 from utils.activation_functions import sigmoid
-
-import numpy as np
 
 
 class MultiLayerPerceptron(Classifier):

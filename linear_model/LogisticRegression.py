@@ -1,5 +1,4 @@
 """逻辑回归"""
-from base import Classifier
 import numpy as np
 
 

@@ -2,7 +2,7 @@ import operator
 
 import numpy as np
 
-from ..base import Classifier
+from base import Classifier
 
 
 class DecisionTree(Classifier):
@@ -55,11 +55,11 @@ class DecisionTree(Classifier):
         返回
         """
         result_with_feature_index = data_set[data_set[:,
-                                                      feature_index] == feature_value]  # 筛选出指定列，并带指定该列的值的array
+                                             feature_index] == feature_value]  # 筛选出指定列，并带指定该列的值的array
         # 去掉result_with_feature_index的特征列
         result_without_feature_index = np.hstack((result_with_feature_index[:, 0:feature_index],
                                                   result_with_feature_index[:,
-                                                                            feature_index + 1:]))
+                                                  feature_index + 1:]))
         return result_without_feature_index
 
     @staticmethod
@@ -79,8 +79,8 @@ class DecisionTree(Classifier):
                     data_set, i, feature_value)  # 按特征i，及feature_value分割数据集
                 n_samples_sub = sub_data_set.shape[0]
                 new_entropy += n_samples_sub / n_samples * \
-                    DecisionTree._calc_entropy(
-                        sub_data_set)  # 计算sub_data_set的熵
+                               DecisionTree._calc_entropy(
+                                   sub_data_set)  # 计算sub_data_set的熵
             info_gain = base_entropy - new_entropy  # 计算信息增益
             if info_gain > best_info_gain:  # 选出信息增益最大的那个
                 best_info_gain = info_gain

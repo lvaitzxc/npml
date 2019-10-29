@@ -42,4 +42,3 @@ class OrdinaryLeastSquare(Regressor):
         预测标签的一维数组
         """
         return X @ self.coef + self.intercept
-

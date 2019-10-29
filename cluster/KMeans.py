@@ -3,7 +3,6 @@ import random
 import numpy as np
 
 from base import Clusterer
-from utils.distances import euclidean_distance
 
 
 class KMeans(Clusterer):

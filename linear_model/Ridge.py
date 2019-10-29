@@ -1,7 +1,7 @@
-from base import Regressor
-
 import numpy as np
 from numpy.linalg import pinv
+
+from base import Regressor
 
 
 class Ridge(Regressor):
