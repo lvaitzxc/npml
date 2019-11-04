@@ -35,6 +35,7 @@ class SemiSupervisedModel(Model):
 
 class BaseMixin:
     """所有Mixin类的基类"""
+    _model_type = 'Model'
 
     def score(self, X: np.ndarray, y: np.ndarray, scorer: Callable[[np.ndarray, np.ndarray], float]) -> float:
         """模型在X,y上的评分
@@ -49,58 +50,16 @@ class BaseMixin:
         return score
 
 
-class ClassifierMixin:
+class ClassifierMixin(BaseMixin):
     """所有分类模型的Mixin类"""
     _model_type = 'Classifier'
 
-    def score(self, X, y, scorer='accuracy'):
-        score_function_dict = {
-            'accuracy': accuracy,
-            'precision': precision,
-            'recall': recall,
-            'f1': f1,
-            'roc_auc': roc_auc,
-            'hinge': hinge
-        }
-        if not score_function_dict.has_key(scorer):
-            raise NameError(
-                "%s not in the given list(r2、mse、mae、ev、me、msle、medae)" % scorer)
-        scorer_function = score_function_dict.get(scorer)
-        y_predict = self.predict(X)  # 预测值
-        score = scorer_function(y, y_predict)
 
-        return score
-
-
-class RegressorMixin:
+class RegressorMixin(BaseMixin):
     """所有回归模型的Mixin类"""
     _model_type = 'Regressor'
 
-    def score(self, X, y, scorer='r2'):
-        """计算回归器的评分
-        @param X: 样本数据
-        @param y: 样本值
-        @param scorer: 评分函数，可选r2、mse、mae、ev、me、msle、medae
-        @return: 模型在数据X,y上的评分
-        """
-        score_function_dict = {
-            'r2': r2,
-            'mse': mse,
-            'mae': mae,
-            'ev': explained_variance,
-            'me': max_error,
-            'msle': msle,
-            'medae': median_absolute_error
-        }
-        if not score_function_dict.has_key(scorer):
-            raise NameError(
-                "%s not in the given list(r2、mse、mae、ev、me、msle、medae)" % scorer)
-        scorer_function = score_function_dict.get(scorer)
-        y_predict = self.predict(X)  # 预测值
-        score = scorer_function(y, y_predict)
 
-        return score
-
-
-class Clusterer(Model):
-    """聚类器"""
+class ClusterMixin(BaseMixin):
+    """所有聚类模型的Mixin类"""
+    _model_type = 'Clusterer'
