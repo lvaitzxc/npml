@@ -19,7 +19,8 @@ def mae(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 
 def explained_variance(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    """"""
+    """可解释方差"""
+    return 1 - np.var(y_true - y_pred) / np.var(y_true)
 
 
 def max_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
