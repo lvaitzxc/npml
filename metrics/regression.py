@@ -24,7 +24,8 @@ def explained_variance(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 
 def max_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    """"""
+    """最大误差"""
+    return np.max(np.abs(y_true - y_pred))
 
 
 def msle(y_true: np.ndarray, y_pred: np.ndarray) -> float:
