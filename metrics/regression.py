@@ -29,7 +29,8 @@ def max_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 
 def msle(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    """mean squared logarithmic error"""
+    """平均对数误差"""
+    return np.mean((np.log(1 + y_true) - np.log(1 + y_pred))**2)
 
 
 def median_absolute_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
