@@ -3,7 +3,7 @@ import numpy as np
 
 
 def mse(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    """均方误差 mse = ∑(y_true - y_pred) / n"""
+    """均方误差 mse = ∑(y_true - y_pred)^2 / n"""
     return np.average((y_true - y_pred) ** 2)
 
 
@@ -14,7 +14,8 @@ def r2(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 
 def mae(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    """"""
+    """平均绝对误差 mae = ∑|y_true - y_pred| / n"""
+    return np.mean(np.abs(y_true - y_pred))
 
 
 def explained_variance(y_true: np.ndarray, y_pred: np.ndarray) -> float:
