@@ -9,6 +9,8 @@ def mse(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 def r2(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     """r2"""
+    y_mean = y_true.mean()
+    return 1 - np.sum((y_true - y_pred)**2) / np.sum((y_true - y_mean)**2)
 
 
 def mae(y_true: np.ndarray, y_pred: np.ndarray) -> float:
