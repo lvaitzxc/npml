@@ -1,4 +1,5 @@
 """距离、相似度
+点x=(x1,x2,...,xn)和点y=(y1,y2,...,yn)之间的各种距离
 - 欧氏距离
 - 曼哈顿距离
 - 切比雪夫距离
@@ -14,7 +15,7 @@ import numpy as np
 
 
 def euclidean_distance(x1, x2):
-    """欧氏距离
+    """欧氏距离 d(x,y)=( ∑(xi-yi)^2 )^0.5
     Parameters
     ----------
         x1, x2: n维空间的两个样本点
@@ -103,3 +104,8 @@ def cosine_similiarity(x1, x2):
         返回点x1和x2的余弦相似度
     """
     return np.dot(x1, x2) / np.sqrt(np.sum(x1 ** 2)) / np.sqrt(np.sum(x2 ** 2))
+
+if __name__ == '__main__':
+    x1 = np.array([1,2,3])
+    x2 = np.array([4,5,6])
+    print(cosine_similiarity(x1,x2))

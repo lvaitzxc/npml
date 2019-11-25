@@ -55,6 +55,7 @@ class ClassifierMixin(BaseMixin):
     _model_type = 'Classifier'
 
 
+
 class RegressorMixin(BaseMixin):
     """所有回归模型的Mixin类"""
     _model_type = 'Regressor'
@@ -63,3 +64,4 @@ class RegressorMixin(BaseMixin):
 class ClusterMixin(BaseMixin):
     """所有聚类模型的Mixin类"""
     _model_type = 'Clusterer'
+    

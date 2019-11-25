@@ -8,13 +8,13 @@ class PCA():
         super(PCA, self).__init__()
         self.model_type = "PCA"
 
-    def fit(self, X, n_dim=2):
+    def fit(self, X: np.ndarray, dim: int = 2) -> object:
         """训练
 
         Parameters
         ----------
         X : 二维数组 (n_samples, n_features)
-        n_dim : int, optional
+        dim : int, optional
             欲将数据缩放到几维
         """
 
@@ -25,7 +25,7 @@ class PCA():
         index = np.argsort(eigenvalues[::-1])
         eigenvectors = eigenvectors[:, index]  # 重新排列特征向量 从左往右按特征值大小降序
         # 再取排序后的前n_dim个特征向量, 每一列为一个特征
-        self.eigenvectors = eigenvectors[:, :n_dim]
+        self.eigenvectors = eigenvectors[:, :dim]
         return self
 
     def transform(self, X):

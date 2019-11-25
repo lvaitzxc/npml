@@ -19,8 +19,14 @@ def max_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 
 def mae(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    """平均绝对误差 median_absolute_error mae = ∑|y_true - y_pred| / n"""
-    return np.mean(np.abs(y_true - y_pred))
+    """平均绝对误差 median absolute error
+          (|y_true_1 - y_pred_1| + |y_true_2 - y_pred_2| + ... + |y_true_n - y_pred_n|)
+    mae = -----------------------------------------------------------------------------
+                                            n
+    i = 1
+
+    """
+    return np.average(np.abs(y_true - y_pred))
 
 
 def mse(y_true: np.ndarray, y_pred: np.ndarray) -> float:
@@ -30,7 +36,7 @@ def mse(y_true: np.ndarray, y_pred: np.ndarray) -> float:
 
 def msle(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     """平均对数误差mean squared logarithmic error"""
-    return np.mean((np.log(1 + y_true) - np.log(1 + y_pred))**2)
+    return np.average((np.log(1 + y_true) - np.log(1 + y_pred))**2)
 
 
 def median_absolute_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
